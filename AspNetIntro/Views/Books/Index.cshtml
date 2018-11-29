@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<AspNetIntro.Models.Book>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Books</title>
+</head>
+<body>
+    <ul id="booksList">
+        @foreach (var item in Model)
+        { 
+            <li>@item.Id @item.Title @item.Year</li>
+        }
+    </ul>
+
+    <form action="/books/create" method="post">
+        <input type="text" name="title" required />
+        <input type="number" name="year" required />
+        <input type="submit" value="Create"/>
+    </form>
+</body>
+</html>

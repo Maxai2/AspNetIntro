@@ -1,0 +1,49 @@
+﻿@model WebApplication1.ViewModels.BooksDateViewModel
+
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+@Html.Partial("_BookMenuPartial")
+
+<time>@Model.CurrentTime.ToString()</time>
+
+<h4>Books:</h4>
+
+<ul id="booksul">
+    @foreach (var b in Model.Books)
+    {
+    <li>
+        @b.Title
+        @*<a href="/book/get/@b.Id">more</a>*@
+        <a href="/books/@b.Id">more</a>
+    </li>
+    }
+</ul>
+
+<form action="/book/add" method="post">
+    <input type="text" name="title" placeholder="Title" required />
+    <br />
+    <input type="number" name="year" placeholder="Year" required />
+    <br />
+    <input type="submit" value="Add book" />
+</form>
+
+<br />
+<button onclick="addRandBook()">Add random book</button>
+
+<script>
+    function addRandBook()
+    {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function ()
+        {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                document.getElementById("booksul").innerHTML += this.responseText;
+            }
+        };
+        xhttp.open("post", "/book/addrandom", true);
+        xhttp.send();
+    }
+</script>

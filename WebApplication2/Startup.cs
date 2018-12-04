@@ -5,21 +5,37 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebApplication1.Services;
+using WebApplication2.Models;
+using WebApplication2.Services;
 
-namespace WebApplication1
+namespace WebApplication2
 {
     public class Startup
     {
+        private IConfiguration configuration;
+
+        public Startup(IConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
 
             //services.AddTransient<IBookService, BookService>(); // при каждом обращении к IRepository SqlRepository создается каждый раз
-            //services.AddScoped<IBookService, BookService>(); // в рамках одного запроса один раз создается SqlRepository
-            services.AddSingleton<IBookService, BookService>();
+            services.AddScoped<IBookService, BookService>(); // в рамках одного запроса один раз создается SqlRepository
+            //services.AddSingleton<IBookService, BookService>();
 
+            services.AddDbContext<BooksContext>(options =>
+            {
+                string connstr = configuration.GetConnectionString("DefaultConnection");
+                options.UseSqlServer(connstr);
+                options.UseLazyLoadingProxies();
+            });
             //services.AddTransient<BookService>();
         }
 

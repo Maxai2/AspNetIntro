@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using WebApplication1.Models;
+using WebApplication2.Models;
 
-namespace WebApplication1.Services
+namespace WebApplication2.Services
 {
     public interface IBookService
     {

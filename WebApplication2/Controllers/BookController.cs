@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Models;
-using WebApplication1.Services;
-using WebApplication1.ViewModels;
+using WebApplication2.Models;
+using WebApplication2.Services;
+using WebApplication2.ViewModels;
 
-namespace WebApplication1.Controllers
+namespace WebApplication2.Controllers
 {
     public class BookController : Controller
     {

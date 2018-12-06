@@ -1,0 +1,12 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Hello!</h2>
+
+@*<a href="/books">Show all books</a>*@
+
+@*@Html.ActionLink("Show all books", "All", "Book")*@ @*htmlHelper*@
+
+<a asp-controller="Book" asp-action="All" asp-route-type="simplebook">Show all books</a>  @*tagHelper*@

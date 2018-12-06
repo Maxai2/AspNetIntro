@@ -1,0 +1,47 @@
+﻿@model List<Book>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>All books</h4>
+
+@*<table>
+    <tr><th>ıd</th><th>tıtle</th><th>year</th></tr>
+    @foreach (Book b in Model)
+    {
+        <tr>
+            <td>@b.Id</td>
+            <td>@b.Title</td>
+            <td>@b.Year</td>
+        </tr>
+    }
+</table>*@
+
+@Html.CreateTable(Model)
+
+
+
+@*@using (Html.BeginForm("Edit", "Book", FormMethod.Get))
+{
+    @*<select name="id">
+        @foreach (var m in Model)
+        {
+            <option value="@m.Id">@m.Title</option>
+        }
+    </select>*@
+
+    @*@Html.DropDownList("ListId", new SelectList(Model, "Id", "Title"))
+    <br/>
+    <input type="submit" value="Edit" />
+}*@
+
+<form asp-controller="Book" asp-action="Edit" method="get">
+
+    <select name="id" asp-items="@{new SelectList(Model, "Id", "Title")}">
+
+    </select>
+
+    <br />
+    <input type="submit" value="Edit" />
+</form>

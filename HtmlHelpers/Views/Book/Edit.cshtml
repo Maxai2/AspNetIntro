@@ -1,0 +1,37 @@
+﻿@model Book
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Edit book</h4>
+
+
+@*@using (Html.BeginForm("Edit", "Book", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    @Html.LabelFor(m => m.Title) // для выделения textbox
+    @Html.TextBoxFor(m => m.Title, 
+    new { placeholder = "TITLE", required = "required", @class = "test" })
+    <br />
+    @Html.LabelFor(m => m.Year)
+    @Html.EditorFor(m => m.Year) //  определяет тип данных
+    <br />
+    <input type="submit" value="Save" />
+}*@
+
+
+<form asp-controller="Book" asp-action="Edit" method="post">
+    <input type="hidden" asp-for="@Model.Id"/>
+
+    <label asp-for="@Model.Title"></label>
+    <input asp-for="@Model.Title"/>
+    <br />
+
+    <label asp-for="@Model.Year"></label>
+    <input asp-for="@Model.Year"/>
+    <br />
+
+    <input type="submit" value="Save"/>
+</form>

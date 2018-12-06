@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>My site</title>
+    <environment names="Development">
+        <link rel="stylesheet" type="text/css" href="~/bootstrap.min.css" />
+    </environment>
+
+    <environment names="Production">
+        <link rel="stylesheet" type="text/css" href="https://ajax.aspnetcdn.com/ajax/bootstrap/4.1.1/css/bootstrap.min.css" asp-fallback-test-class="hidden" asp-fallback-test-property="visibility" asp-fallback-test-value="hidden" asp-fallback-href="~/bootstrap.min.css" />
+    </environment>
+
+    <link rel="stylesheet" type="text/css" href="~/styles.css" asp-append-version="true"/>
+</head>
+<body>
+    <h4>Site about books</h4>
+    <hr/>
+
+    @RenderBody()
+
+</body>
+</html>

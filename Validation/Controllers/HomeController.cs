@@ -6,6 +6,8 @@ namespace Validation.Controllers
     {
         public IActionResult Index()
         {
+            //ViewBag.IsAuth = true;
+            ViewData["IsAuth"] = true;
             return View();
         }
     }

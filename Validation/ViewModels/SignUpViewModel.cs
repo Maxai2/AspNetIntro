@@ -1,14 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using Validation.Utils;
 
 namespace Validation.ViewModels
 {
     public class SignUpViewModel
     {
-        [Display (Name = "Email")]
-        [Required (ErrorMessage = "Email is required")]
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "Email is required")]
         [EmailAddress]
-        [Remote(action: "CheckEmail", controller: "User", HttpMethod = "POST", ErrorMessage = "Email used")]
+        //[Remote(action: "CheckEmail", controller: "User", HttpMethod = "POST", ErrorMessage = "Email used")]
+        [CheckEmail(ErrorMessage = "!!!")]
         public string Email { get; set; }
 
         [Display(Name = "Password")]

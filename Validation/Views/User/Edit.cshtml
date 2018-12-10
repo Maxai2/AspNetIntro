@@ -1,0 +1,35 @@
+﻿@model UserInfoViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit user info</h2>
+
+<form asp-controller="User" asp-action="Edit" method="post">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+    <span asp-validation-for="Name"></span>
+    <br />
+    <label asp-for="Birthday"></label>
+    <input asp-for="Birthday" type="date" />
+    <span asp-validation-for="Birthday"></span>
+    <br />
+    <label asp-for="Phone"></label>
+    <input asp-for="Phone" />
+    <span asp-validation-for="Phone"></span>
+    <br />
+    <label asp-for="Avatar"></label>
+    <input asp-for="Avatar" />
+    <span asp-validation-for="Avatar"></span>
+    <br />
+    <input type="submit" value="Save" />
+</form>
+
+
+@*
+@section scripts {
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+}
+*@

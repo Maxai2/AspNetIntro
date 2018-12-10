@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetIntro", "AspNetIntro\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication2", "WebApplication2\WebApplication2.csproj", "{D51E2307-F99A-4EBB-BF0E-8BEB5EEDB2D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlHelpers", "HtmlHelpers\HtmlHelpers.csproj", "{C3DD1BFD-B78D-44FC-80BC-312B652348E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlHelpers", "HtmlHelpers\HtmlHelpers.csproj", "{C3DD1BFD-B78D-44FC-80BC-312B652348E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation", "Validation\Validation.csproj", "{A62B4C30-2552-444F-9C1F-DE98C3FD4EA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{C3DD1BFD-B78D-44FC-80BC-312B652348E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3DD1BFD-B78D-44FC-80BC-312B652348E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3DD1BFD-B78D-44FC-80BC-312B652348E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A62B4C30-2552-444F-9C1F-DE98C3FD4EA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A62B4C30-2552-444F-9C1F-DE98C3FD4EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A62B4C30-2552-444F-9C1F-DE98C3FD4EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A62B4C30-2552-444F-9C1F-DE98C3FD4EA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

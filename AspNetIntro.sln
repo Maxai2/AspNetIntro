@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication2", "WebAppli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlHelpers", "HtmlHelpers\HtmlHelpers.csproj", "{C3DD1BFD-B78D-44FC-80BC-312B652348E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation", "Validation\Validation.csproj", "{A62B4C30-2552-444F-9C1F-DE98C3FD4EA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validation", "Validation\Validation.csproj", "{A62B4C30-2552-444F-9C1F-DE98C3FD4EA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caching", "Cashing\Caching.csproj", "{1D996919-9ADB-4007-9FED-05F65108F612}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A62B4C30-2552-444F-9C1F-DE98C3FD4EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A62B4C30-2552-444F-9C1F-DE98C3FD4EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A62B4C30-2552-444F-9C1F-DE98C3FD4EA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D996919-9ADB-4007-9FED-05F65108F612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D996919-9ADB-4007-9FED-05F65108F612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D996919-9ADB-4007-9FED-05F65108F612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D996919-9ADB-4007-9FED-05F65108F612}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

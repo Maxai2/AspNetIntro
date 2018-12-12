@@ -1,0 +1,17 @@
+﻿@model List<Book>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>All books:</h4>
+
+@*<cache expires-sliding="TimeSpan.FromSeconds(20)">
+    </cache>*@
+
+<ol>
+    @foreach (Book b in Model)
+    {
+        <li>@b.Title <a asp-action="Get" asp-route-id="@b.Id">more</a></li>
+    }
+</ol>
+

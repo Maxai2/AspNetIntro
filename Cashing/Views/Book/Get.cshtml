@@ -1,0 +1,17 @@
+﻿@model Book
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Book info:</h4>
+
+<label asp-for="Id"></label>
+<input asp-for="Id" readonly />
+<br />
+<label asp-for="Title"></label>
+<input asp-for="Title" readonly />
+<br />
+<label asp-for="Year"></label>
+<input asp-for="Year" readonly />
+<br />
+

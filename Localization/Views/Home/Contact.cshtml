@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<p>@ViewData["Hello"]</p>
+<p>@SharedLocalizer["Hello"]</p>
+
+<address>
+    @Localizer["Address1"]<br />
+    @Localizer["Address2"]<br />
+    <abbr title="@Localizer["PhoneAbbr"]">@Localizer["Phone1"]:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>@Localizer["Support"]:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>@Localizer["Marketing"]:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>

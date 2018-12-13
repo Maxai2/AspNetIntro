@@ -1,0 +1,17 @@
+﻿@model CultureViewModel
+
+@{
+    ViewData["Title"] = "About";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<p>@Localizer["AboutString"]</p>
+
+<p>
+    <label asp-for="Culture"></label>
+    <input asp-for="Culture" readonly />
+    <br />
+    <label asp-for="UICulture"></label>
+    <input asp-for="UICulture" readonly />
+</p>

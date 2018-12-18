@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Authetification.EF;
 using Authetification.Services;
+using System.Security.Claims;
 
 namespace Authetification
 {
@@ -24,6 +25,7 @@ namespace Authetification
             services.AddDbContext<AuthContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("AuthConnection"));
+                options.UseLazyLoadingProxies();
             });
 
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
@@ -33,7 +35,16 @@ namespace Authetification
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(opts =>
             {
                 opts.LoginPath = "/Account/SignIn";
+                opts.AccessDeniedPath = "/Account/Index";
             }); // same with upper
+
+            services.AddAuthorization(opts =>
+            {
+                opts.AddPolicy("FG", policy =>
+                {
+                    policy.RequireClaim(ClaimTypes.Gender, true.ToString());
+                });
+            });
 
 
             services.AddMvc();

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Authetification.Models
 {
@@ -19,5 +21,16 @@ namespace Authetification.Models
         [Required]
         [MaxLength(50)]
         public string Salt { get; set; }
+
+        [Required]
+        [DefaultValue(true)]
+        public bool Gender { get; set; }
+
+        [Required]
+        [DefaultValue(0)]
+        public int BYear { get; set; }
+
+        [ForeignKey("RoleId")]
+        public virtual Role Role { get; set; }
     }
 }

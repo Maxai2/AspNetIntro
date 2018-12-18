@@ -30,7 +30,8 @@ namespace Authetification.Services
             {
                 Email = email,
                 PswdHash = data.pswdhash,
-                Salt = data.salt
+                Salt = data.salt,
+                Role = context.Roles.Find(1)
             };
 
             context.Users.Add(user);
@@ -62,7 +63,9 @@ namespace Authetification.Services
         {
             List<Claim> claims = new List<Claim>()
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email)
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.RoleName),
+                new Claim(ClaimTypes.Gender, user.Gender.ToString())
             };
 
             ClaimsIdentity identity = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);

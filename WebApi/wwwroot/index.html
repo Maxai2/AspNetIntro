@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        form div {
+            display: grid;
+            grid-template-columns: 100px 200px auto;
+            grid-gap: 10px;
+            margin-bottom: 10px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        table, td, th {
+            border: 1px solid gray;
+            padding: 5px;
+        }
+        #errors {
+            color: darkred;
+        }
+    </style>
+    <div>
+        <h3>Site about books!</h3>
+        <hr />
+    </div>
+    <div>
+        <h5>Create book</h5>
+        <form onsubmit="submitBookForm()">
+            <ul id="errors"></ul>
+            <div>
+                <label for="id">ID</label>
+                <input type="number" readonly name="id" id="id" />
+            </div>
+            <div>
+                <label for="title">Title</label>
+                <input type="text" required name="title" id="title" />
+            </div>
+            <div>
+                <label for="year">Year</label>
+                <input type="number" required name="year" id="year" />
+            </div>
+            <div>
+                <input type="reset" value="Clear" />
+                <input type="submit" value="Save" />
+            </div>
+        </form>
+    </div>
+    <hr />
+    <div>
+        <h5>All books</h5>
+        <button onclick="getAllBooks()">Show</button>
+        <br />
+        <br />
+        <table id="books">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        function getAllBooks() {
+            $.ajax({
+                url: "http://localhost:60252/api/book",
+                method: "GET",
+                contentType: "application/json",
+                success: function (books) {
+                    $("#books tbody").empty();
+                    $.each(books, function (index, book) {
+                        $("#books tbody").append("<tr><td>" + book.id + "</td><td>" + book.title + "</td><td>" + book.year
+                            + "</td><td><button onclick='editBook(" + book.id + ")'>edit</button></td>"
+                            + "<td><button onclick='deleteBook(" + book.id + ")'>delete</button></td></tr>");
+                    })
+                }
+            });
+        }
+
+        function editBook(id) {
+            $.ajax({
+                url: "http://localhost:60252/api/book/" + id,
+                method: "GET",
+                contentType: "application/json",
+                success: function (book) {
+                    $("#id").val(book.id);
+                    $("#title").val(book.title);
+                    $("#year").val(book.year);
+                }
+            });
+        }
+
+        function submitBookForm() {
+            event.preventDefault();
+            if ($("#id").val() != '') {
+                $.ajax({
+                    url: "http://localhost:60252/api/book",
+                    method: "PUT",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        id: $("#id").val(),
+                        title: $("#title").val(),
+                        year: $("#year").val(),
+                    }),
+                    success: function (book) {
+                        $("#id").val("");
+                        $("#title").val("");
+                        $("#year").val("");
+                        getAllBooks();
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    url: "http://localhost:60252/api/book",
+                    method: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        title: $("#title").val(),
+                        year: $("#year").val(),
+                    }),
+                    success: function (book) {
+                        $("#errors").empty();
+                        $("#id").val("");
+                        $("#title").val("");
+                        $("#year").val("");
+                        getAllBooks();
+                    }
+                });
+            }
+        }
+
+    </script>
+</body>
+
+</html>

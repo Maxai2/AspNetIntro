@@ -19,9 +19,12 @@ namespace WebApi
 {
     public class Startup
     {
+        private AuthOptions authOptions;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            authOptions = Configuration.GetSection(nameof(AuthOptions)).Get<AuthOptions>(); // for local
         }
 
         public IConfiguration Configuration { get; }
@@ -29,21 +32,27 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AuthOptions>(Configuration); // for everywhere
+            services.Configure<AuthOptions>(options =>
+            {
+                Configuration.GetSection(nameof(AuthOptions)).Bind(options);
+            });
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.RequireHttpsMetadata = false;
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
                     ValidateIssuer = true,
-                    ValidIssuer = "WebApiEx",
+                    ValidIssuer = authOptions.Issuer,
 
                     ValidateAudience = true,
-                    ValidAudience = "http://localhost:60252/",
+                    ValidAudience = authOptions.Audience,
 
                     ValidateLifetime = true,
 
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.Default.GetBytes("my_security_key_1234567890")),
+                    IssuerSigningKey = authOptions.GetSymmetricSecurityKey(),
 
                     ClockSkew = TimeSpan.Zero
                 };

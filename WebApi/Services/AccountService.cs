@@ -8,6 +8,7 @@ using WebApi.DTO;
 using WebApi.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.Extensions.Options;
 
 namespace WebApi.Services
 {
@@ -15,8 +16,9 @@ namespace WebApi.Services
     {
         private List<Account> accounts;
         private List<AccountToken> accountTokens;
+        private AuthOptions authOptions;
 
-        public AccountService()
+        public AccountService(IOptions<AuthOptions> options)
         {
             this.accounts = new List<Account>()
             {
@@ -25,6 +27,7 @@ namespace WebApi.Services
             };
 
             accountTokens = new List<AccountToken>();
+            authOptions = options.Value;
         }
 
         public LoginResponse UpdateToken(string refreshToken)
@@ -73,11 +76,11 @@ namespace WebApi.Services
 
             JwtSecurityToken token = new JwtSecurityToken
                 (
-                    issuer: "WebApiEx",
-                    audience: "http://localhost:60252/",
+                    issuer: authOptions.Issuer,
+                    audience: authOptions.Audience,
                     claims: claimsIdentity.Claims,
-                    expires: DateTime.Now.AddMinutes(1),
-                    signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.Default.GetBytes("my_security_key_1234567890")), SecurityAlgorithms.HmacSha256)
+                    expires: DateTime.Now.AddMinutes(authOptions.AccessLifetime),
+                    signingCredentials: new SigningCredentials(authOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256)
                 );
 
             string tokenStr = new JwtSecurityTokenHandler().WriteToken(token);
@@ -94,7 +97,7 @@ namespace WebApi.Services
             accountTokens.Add(new AccountToken()
             {
                 AccountId = account.Id,
-                Expires = DateTime.Now.AddMinutes(10),
+                Expires = DateTime.Now.AddMinutes(authOptions.RefreshLifetime),
                 RefreshToken = resp.RefreshToken
             });
 

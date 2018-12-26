@@ -192,6 +192,7 @@
 
         function submitBookForm() {
             event.preventDefault();
+
             if ($("#id").val() != '') {
                 $.ajax({
                     url: "http://localhost:60252/api/book",
@@ -207,6 +208,12 @@
                         $("#title").val("");
                         $("#year").val("");
                         getAllBooks();
+                    },
+                    statusCode: {
+                        401: function () {
+                            console.log("access token dead!");
+                            updateToken(submitBookForm);
+                        }
                     }
                 });
             }
@@ -225,9 +232,34 @@
                         $("#title").val("");
                         $("#year").val("");
                         getAllBooks();
+                    },
+                    statusCode: {
+                        401: function () {
+                            console.log("access token dead!");
+                            updateToken(submitBookForm);
+                        }
                     }
                 });
             }
+        }
+
+        function updateToken(callback) { // updateToken(editBook)
+            $.ajax({
+                url: "http://localhost:60252/api/account/token",
+                method: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(localStorage["refresh_token"]),
+                success: function (data) {
+                    localStorage["access_token"] = data.accessToken;
+                    localStorage["refresh_token"] = data.refreshToken;
+                    localStorage["login"] = data.login;
+                    callback();
+                },
+                error: function () {
+                    localStorage.clear();
+                    window.location.reload();
+                }
+            });
         }
 
     </script>

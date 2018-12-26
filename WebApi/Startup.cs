@@ -67,7 +67,7 @@ namespace WebApi
             app.UseStaticFiles();
 
             // Header: Authentication (Bearer token1/3.token2/3.token3/3)
-            // HttpContext.User = 
+            // HttpContext.User = из Claims в Payload
             app.UseAuthentication();
 
             app.UseMvc();

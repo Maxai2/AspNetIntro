@@ -19,7 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authetification", "Authetif
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity", "Identity\Identity.csproj", "{54156A0D-3C88-4CA7-8A7B-2173686B1C26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{14CAD181-D22C-4748-8558-D4673CF1602C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{14CAD181-D22C-4748-8558-D4673CF1602C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiSwapperNewArchitecture", "WebApiSwapperNewArchitecture\WebApiSwapperNewArchitecture.csproj", "{D329B300-F190-4AF0-9E65-7213F0A97351}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksAppCore(WebApiSwapperNewArchitecture)", "BooksAppCore\BooksAppCore(WebApiSwapperNewArchitecture).csproj", "{2CFB5B5E-1406-4D41-B3F4-BED8F229B5A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksInfrastructure(WebApiSwapperNewArchitecture)", "BooksInfrastructure\BooksInfrastructure(WebApiSwapperNewArchitecture).csproj", "{071A84E1-9B16-4190-8291-6851DEFFF3B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +69,18 @@ Global
 		{14CAD181-D22C-4748-8558-D4673CF1602C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14CAD181-D22C-4748-8558-D4673CF1602C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14CAD181-D22C-4748-8558-D4673CF1602C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D329B300-F190-4AF0-9E65-7213F0A97351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D329B300-F190-4AF0-9E65-7213F0A97351}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D329B300-F190-4AF0-9E65-7213F0A97351}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D329B300-F190-4AF0-9E65-7213F0A97351}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CFB5B5E-1406-4D41-B3F4-BED8F229B5A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CFB5B5E-1406-4D41-B3F4-BED8F229B5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CFB5B5E-1406-4D41-B3F4-BED8F229B5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CFB5B5E-1406-4D41-B3F4-BED8F229B5A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{071A84E1-9B16-4190-8291-6851DEFFF3B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{071A84E1-9B16-4190-8291-6851DEFFF3B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{071A84E1-9B16-4190-8291-6851DEFFF3B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{071A84E1-9B16-4190-8291-6851DEFFF3B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

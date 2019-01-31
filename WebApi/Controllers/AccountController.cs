@@ -32,10 +32,15 @@ namespace WebApi.Controllers
                 return new JsonResult(resp);
         }
 
-        [HttpPost("Token")] // api/account/token
-        public IActionResult UpdateToken([FromBody]string refreshToken)
+        public class TokenRequest
         {
-            LoginResponse resp = accountService.UpdateToken(refreshToken);
+            public string RefreshToken { get; set; }
+        }
+
+        [HttpPost("Token")] // api/account/token
+        public IActionResult UpdateToken([FromBody]TokenRequest request)
+        {
+            LoginResponse resp = accountService.UpdateToken(request.RefreshToken);
 
             if (resp == null)
                 return StatusCode(401);

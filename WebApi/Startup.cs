@@ -71,6 +71,8 @@ namespace WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(b => b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()); // for many client
+
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();

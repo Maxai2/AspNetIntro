@@ -43,7 +43,7 @@ namespace WebApi.Controllers
             LoginResponse resp = accountService.UpdateToken(request.RefreshToken);
 
             if (resp == null)
-                return StatusCode(401);
+                return StatusCode(400);
             else
                 return new JsonResult(resp);
         }
